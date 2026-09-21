@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>История обработок</h1>
+
+{% if jobs %}
+<table border="1" cellpadding="8" cellspacing="0">
+  <tr>
+    <th>Job ID</th>
+    <th>Начало</th>
+    <th>Кадров</th>
+    <th>F1</th>
+    <th>MOTA</th>
+    <th>Просмотр</th>
+    <th>Отчёты</th>
+  </tr>
+  {% for j in jobs %}
+  <tr>
+    <td><code>{{ j.job_id[:8] }}…</code></td>
+    <td>{{ j.started_at }}</td>
+    <td>{{ j.total_frames }}</td>
+    <td>{{ j.f1 }}</td>
+    <td>{{ j.mota }}</td>
+    <td><a href="/result/{{ j.job_id }}">Открыть</a></td>
+    <td>
+      <a href="/reports/{{ j.job_id }}/csv">CSV</a> |
+      <a href="/reports/{{ j.job_id }}/pdf">PDF</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>Пока нет ни одной обработки. <a href="/">Загрузить видео</a></p>
+{% endif %}
+
+{% endblock %}

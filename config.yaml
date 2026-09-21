@@ -1,0 +1,20 @@
+model:
+  weights: models/yolov8n_ball.pt
+  conf: 0.35
+  iou: 0.5
+
+tracker:
+  max_age: 30
+  min_hits: 2
+  iou_threshold: 0.3
+
+video:
+  max_size_mb: 500
+  allowed_extensions: [mp4, avi, mov, mkv]
+
+storage:
+  db_path: data/tracker.db
+
+reports:
+  dir: static/reports
+  pdf_first_n_points: 50

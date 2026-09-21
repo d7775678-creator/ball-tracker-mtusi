@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Результат обработки</h1>
+
+<p><b>Job ID:</b> <code>{{ job_id }}</code></p>
+
+<video src="{{ video_url }}" controls width="800"></video>
+
+{% if metrics %}
+<h2>Метрики</h2>
+<table border="1" cellpadding="8" cellspacing="0">
+  <tr><th>Кадров обработано</th><td>{{ metrics.total_frames }}</td></tr>
+  <tr><th>Среднее время на кадр</th>
+      <td>{{ "%.2f"|format(metrics.avg_frame_ms) }} мс</td></tr>
+  <tr><th>Precision</th><td>{{ metrics.precision }}</td></tr>
+  <tr><th>Recall</th><td>{{ metrics.recall }}</td></tr>
+  <tr><th>F1</th><td>{{ metrics.f1 }}</td></tr>
+  <tr><th>MOTA</th><td>{{ metrics.mota }}</td></tr>
+  <tr><th>Начало</th><td>{{ metrics.started_at }}</td></tr>
+  <tr><th>Окончание</th><td>{{ metrics.finished_at }}</td></tr>
+</table>
+
+<h2>Скачать отчёт</h2>
+<p>
+  <a href="/reports/{{ job_id }}/csv" class="btn">Скачать CSV</a>
+  &nbsp;
+  <a href="/reports/{{ job_id }}/pdf" class="btn">Скачать PDF</a>
+</p>
+{% endif %}
+
+<p style="margin-top: 20px;">
+  <a href="/">← Загрузить ещё видео</a> |
+  <a href="/reports">История обработок</a>
+</p>
+
+{% endblock %}

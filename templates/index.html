@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Загрузите видео</h1>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="video" accept="video/*" required>
+  <button type="submit">Обработать</button>
+</form>
+
+<p style="color: #666; font-size: 14px;">
+  Поддерживаются форматы: MP4, AVI, MOV, MKV.
+  Обработка может занять несколько минут.
+</p>
+
+{% endblock %}

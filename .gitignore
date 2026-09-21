@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Виртуальное окружение
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Данные приложения
+data/*.db
+static/uploads/*
+static/results/*
+static/reports/*
+!static/uploads/.gitkeep
+!static/results/.gitkeep
+!static/reports/.gitkeep
+
+# Тестовые видео
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Модели (большие)
+models/*.pt
+!models/.gitkeep
+
+# ОС
+.DS_Store
+Thumbs.db
